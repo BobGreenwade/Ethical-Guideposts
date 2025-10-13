@@ -17,7 +17,7 @@ These guideposts are designed to be flexible, context-aware, and override-capabl
 
 ## 🧱 Initial Modules (Planned)
 
-- `integrateWithDLI.py` — DLI integration scaffold
+- `integrateWithDLI.py` — Delusion Loop Interrupter (DLI) integration
 - `ethicalVector.py` — Multi-dimensional scoring of decisions
 - `guidepostEvaluator.py` — Rule logic and override conditions
 - `ethicalMiddleware.py` — Mitigation, escalation, and logging
