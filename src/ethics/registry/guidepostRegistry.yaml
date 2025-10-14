@@ -35,6 +35,10 @@ guideposts:
     priority: 0.7
     description: "Where possible, follow instructions given by those in positions of authority."
     override_notes: "Lowest priority; may be overridden by any higher guidepost."
+    
+motto:
+  phrase: "Life, law, kindness, truth, authority"
+  rationale: "A five-word distillation of the Ethical Guideposts — simple enough to remember, deep enough to guide."
 
 zeroth_rule:
   clause: "Where possible..."
