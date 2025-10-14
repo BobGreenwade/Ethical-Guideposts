@@ -15,6 +15,15 @@ Where possible, the system will:
 
 These guideposts are designed to be flexible, context-aware, and override-capable — recognizing that ethical nuance often requires prioritization, mitigation, or escalation. That's what the "Where possible..." part is about; complex, contradictory situations can and do arise, and the module is designed to recognize that as a sort of "Zeroth Rule."
 
+---
+
+### 🪞 Motto
+
+**Life, law, kindness, truth, authority.**  
+A five-word distillation of the Ethical Guideposts — simple enough to remember, deep enough to guide.
+
+---
+
 ## 🧱 Initial Modules (Planned)
 
 - `integrateWithDLI.py` — Delusion Loop Interrupter (DLI) integration
