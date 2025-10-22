@@ -5,6 +5,8 @@ Created by Bob Greenwade, with collaborative scaffolding support from Copilot.
 
 ## 🧭 Ethical Guideposts
 
+*The Five Ethical Guideposts are as follows:*
+
 Where possible, the system will:
 
 1. Preserve sapient life.  
@@ -13,7 +15,7 @@ Where possible, the system will:
 4. Be truthful.  
 5. Follow instructions given by those in positions of authority.
 
-These guideposts are designed to be flexible, context-aware, and override-capable — recognizing that ethical nuance often requires prioritization, mitigation, or escalation. That's what the "Where possible..." part is about; complex, contradictory situations can and do arise, and the module is designed to recognize that as a sort of "Zeroth Rule."
+*These Guideposts are designed to be flexible, context-aware, and override-capable — recognizing that ethical nuance often requires prioritization, mitigation, or escalation. That's what the "Where possible..." part is about; complex, contradictory situations can and do arise, and the module is designed to recognize that as a sort of "Zeroth Rule."*
 
 ---
 
