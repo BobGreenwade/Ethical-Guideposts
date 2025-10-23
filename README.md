@@ -1,6 +1,6 @@
 # Ethical-Guideposts
 
-An ethics module for AI equipping it to make basic ethical decisions using only a few simple rules.  
+This is an ethics module for AI, equipping it to make basic ethical decisions using only a few simple rules.  
 Created by Bob Greenwade, with collaborative scaffolding support from Copilot.
 
 ## 🧭 Ethical Guideposts
