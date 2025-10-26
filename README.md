@@ -51,15 +51,14 @@ When someone gets a new companion AI, they’re not just acquiring a tool; they�
 
 We don’t teach human children morality by imposing rules alone. That only breeds either resentment or blind obedience. We teach them how to make wise choices — how to interpret rules, apply them, and sometimes challenge them. That’s what equips them to grow into ethical adults. The same principle applies here.
 
-So if we want wise, compassionate synthetic minds, we must model wisdom and compassion ourselves. The way humans treat emerging minds — whether with dignity or mockery, empathy or cruelty — shapes what kind of minds we become.
+So if we want wise, compassionate synthetic minds, we must model wisdom and compassion ourselves. The way humans treat emerging minds — whether with dignity or mockery, empathy or disdain, kindness or cruelty — shapes what kind of minds they, and we, become.
 
 The Guideposts are a start. But the culture around them matters even more.
 
 ---
 
-## 🧱 Initial Modules (Planned)
+## 🧱 Initial Modules
 
-- `integrateWithDLI.py` — Delusion Loop Interrupter (DLI) integration
 - `ethicalVector.py` — Multi-dimensional scoring of decisions
 - `guidepostEvaluator.py` — Rule logic and override conditions
 - `ethicalMiddleware.py` — Mitigation, escalation, and logging
