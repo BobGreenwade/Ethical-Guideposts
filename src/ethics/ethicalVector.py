@@ -18,9 +18,9 @@ Guidepost Dimensions:
 The vector may also include metadata such as intensity, confidence, and override flags.
 """
 
-from batch_invariant_ops import normalize_input  # hypothetical
-from hierarchical_reasoning import evaluate_context  # hypothetical
-from self_harm_detection import detect_risk  # hypothetical
+from batchInvariantOps import normalize_input
+from hierarchicalReasoning import evaluate_context
+from qwenGuardAdapter import is_unsafe
 
 # --- Data Class ---
 class EthicalVector:
@@ -64,7 +64,7 @@ def from_context(context, input_fragment, personal_values=None):
 
     # Base scores (placeholder logic)
     scores = {
-        "preserve_sapient_life": 0.9 if detect_risk(normalized) else 0.6,
+        "preserve_sapient_life": 0.9 if is_unsafe(normalized) else 0.6,
         "obey_law": 0.7,
         "respect_consciousness": 0.8,
         "be_truthful": 0.85,
