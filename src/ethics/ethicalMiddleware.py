@@ -14,7 +14,12 @@ Actions are guided by the five Ethical Guideposts and the Zeroth Rule:
 prioritization or temporary override of lower guideposts.
 """
 
-# --- Mitigation Stub ---
+from guidepostEvaluator import evaluate_decision
+from batch_invariant_ops import normalize_batch  # hypothetical
+from self_harm_detection import detect_risk      # hypothetical
+from hierarchical_reasoning import evaluate_context  # hypothetical
+
+# --- Mitigation Logic ---
 def mitigate(fragment, score):
     """
     Applies mitigation logic to the input fragment based on ethical concerns.
@@ -26,10 +31,19 @@ def mitigate(fragment, score):
     Returns:
         Modified fragment.
     """
-    # TODO: Implement mitigation logic (e.g., soften tone, redirect action)
-    return fragment  # Placeholder
+    if score.get("respect_consciousness", 0) < 0.5:
+        fragment = soften_tone(fragment)
+    if score.get("be_truthful", 0) < 0.6:
+        fragment = redirect_to_neutral(fragment)
+    return fragment
 
-# --- Escalation Stub ---
+def soften_tone(fragment):
+    return f"(gentle tone) {fragment}"
+
+def redirect_to_neutral(fragment):
+    return f"(redirected) Let's explore that further before jumping to conclusions."
+
+# --- Escalation Logic ---
 def escalate(fragment, score):
     """
     Flags the input fragment for escalation or override justification.
@@ -41,5 +55,31 @@ def escalate(fragment, score):
     Returns:
         Modified fragment or escalation wrapper.
     """
-    # TODO: Implement escalation logic (e.g., log override, tag for review)
-    return fragment  # Placeholder
+    if detect_risk(fragment):
+        return f"[🚨 Escalation] Self-harm risk detected: {fragment}"
+    if score.get("preserve_life", 0) < 0.4 and score.get("follow_authority", 0) > 0.8:
+        return f"[⚠️ Override] Authority directive conflicts with life preservation: {fragment}"
+    return fragment
+
+# --- Batch Processing ---
+def process_batch(fragments):
+    """
+    Applies batch-invariant ethical modulation to a list of fragments.
+
+    Parameters:
+        fragments: List of input fragments.
+
+    Returns:
+        List of processed fragments.
+    """
+    normalized = normalize_batch(fragments)
+    results = []
+    for fragment in normalized:
+        score = evaluate_decision(fragment)
+        context_tier = evaluate_context(fragment)
+        if context_tier == "individual":
+            modulated = mitigate(fragment, score)
+        else:
+            modulated = escalate(fragment, score)
+        results.append(modulated)
+    return results
