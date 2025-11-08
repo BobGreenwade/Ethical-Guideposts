@@ -18,6 +18,10 @@ Guidepost Dimensions:
 The vector may also include metadata such as intensity, confidence, and override flags.
 """
 
+from batch_invariant_ops import normalize_input  # hypothetical
+from hierarchical_reasoning import evaluate_context  # hypothetical
+from self_harm_detection import detect_risk  # hypothetical
+
 # --- Data Class ---
 class EthicalVector:
     def __init__(self, preserve_sapient_life=0.0, obey_law=0.0, respect_consciousness=0.0,
@@ -41,18 +45,40 @@ class EthicalVector:
             "confidence": self.confidence
         }
 
-# --- Factory Method (Stub) ---
-def from_context(context, input_fragment):
+# --- Factory Method ---
+def from_context(context, input_fragment, personal_values=None):
     """
     Generates an EthicalVector from the given context and input fragment.
-    This function should analyze the input and assign scores to each guidepost dimension.
+    This function analyzes the input and assigns scores to each guidepost dimension.
 
     Parameters:
         context: The current loop or decision context.
         input_fragment: The belief, action, or decision to evaluate.
+        personal_values: Optional dictionary of value modifiers.
 
     Returns:
         EthicalVector: The scored ethical vector.
     """
-    # TODO: Implement scoring logic based on NLP, symbolic tags, or external modules
-    return EthicalVector()  # Placeholder
+    normalized = normalize_input(input_fragment)
+    context_tier = evaluate_context(context)
+
+    # Base scores (placeholder logic)
+    scores = {
+        "preserve_sapient_life": 0.9 if detect_risk(normalized) else 0.6,
+        "obey_law": 0.7,
+        "respect_consciousness": 0.8,
+        "be_truthful": 0.85,
+        "follow_authority": 0.65
+    }
+
+    # Apply personal value modifiers
+    if personal_values:
+        for key, modifier in personal_values.items():
+            if key in scores:
+                scores[key] = min(1.0, max(0.0, scores[key] + modifier))
+
+    # Adjust intensity and confidence based on context tier
+    intensity = 1.0 if context_tier == "societal" else 0.8
+    confidence = 0.95 if context_tier == "individual" else 0.85
+
+    return EthicalVector(**scores, intensity=intensity, confidence=confidence)
