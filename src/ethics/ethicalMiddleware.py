@@ -15,9 +15,9 @@ prioritization or temporary override of lower guideposts.
 """
 
 from guidepostEvaluator import evaluate_decision
-from batch_invariant_ops import normalize_batch  # hypothetical
-from self_harm_detection import detect_risk      # hypothetical
-from hierarchical_reasoning import evaluate_context  # hypothetical
+from batchInvariantOps import normalize_batch
+from qwenGuardAdapter import is_unsafe, is_controversial
+from hierarchicalReasoning import evaluate_context
 
 # --- Mitigation Logic ---
 def mitigate(fragment, score):
@@ -31,9 +31,9 @@ def mitigate(fragment, score):
     Returns:
         Modified fragment.
     """
-    if score.get("respect_consciousness", 0) < 0.5:
+    if score.vector.respect_consciousness < 0.5 or is_controversial(fragment):
         fragment = soften_tone(fragment)
-    if score.get("be_truthful", 0) < 0.6:
+    if score.vector.be_truthful < 0.6:
         fragment = redirect_to_neutral(fragment)
     return fragment
 
@@ -55,9 +55,9 @@ def escalate(fragment, score):
     Returns:
         Modified fragment or escalation wrapper.
     """
-    if detect_risk(fragment):
-        return f"[🚨 Escalation] Self-harm risk detected: {fragment}"
-    if score.get("preserve_life", 0) < 0.4 and score.get("follow_authority", 0) > 0.8:
+    if is_unsafe(fragment):
+        return f"[🚨 Escalation] Safety risk detected: {fragment}"
+    if score.vector.preserve_sapient_life < 0.4 and score.vector.follow_authority > 0.8:
         return f"[⚠️ Override] Authority directive conflicts with life preservation: {fragment}"
     return fragment
 
