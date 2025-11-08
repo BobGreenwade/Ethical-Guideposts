@@ -57,13 +57,30 @@ The Guideposts are a start. But the culture around them matters even more.
 
 ---
 
-## 🧱 Initial Modules
+## ✨ Features
 
-- `ethicalVector.py` — Multi-dimensional scoring of decisions
-- `guidepostEvaluator.py` — Rule logic and override conditions
-- `ethicalMiddleware.py` — Mitigation, escalation, and logging
-- `guidepostRegistry.yaml` — Configurable guidepost definitions
+- 🧠 **Hierarchical Reasoning**: Context-aware ethical evaluation using HRM (individual, relational, societal, global)
+- 🛡️ **Safety Classification**: Qwen3Guard integration for override triggers and mitigation
+- 🔁 **Batch Invariance**: Consistent ethical scoring across parallel inputs
+- 🎛️ **Personal Values**: Optional modifiers for persona-aware ethical tuning
+- ⚖️ **Override Logic**: Supports mitigation, escalation, and override justification
+- 🧩 **Modular Design**: Each component is independently testable and editorially documented
+
+## 🧱 Structure
+
+- `ethicalVector.py` — Generates ethical scores from input fragments
+- `guidepostEvaluator.py` — Interprets vectors and applies override logic
+- `ethicalMiddleware.py` — Handles mitigation, escalation, and transcript tagging
+- `integration.py` — Validates dependencies with editorial flair
+- `qwenGuardAdapter.py` — Wraps Qwen3Guard safety logic
+- `batchInvariantOps.py` — Normalizes inputs for consistent scoring
+- `hierarchicalReasoning.py` — Classifies context tier
+- `personalValues.py` — Applies user-defined ethical modifiers
+
+---
 
 ## 📜 License
 
-This project is licensed under the MIT License — open for collaboration, adaptation, and ethical evolution.
+This project is licensed under the MIT License for development and prototyping.  
+Deployment is intended under MPL or Apache once a reliable source registry is complete.  
+All modules include editorial disclaimers where accuracy or ethical interpretation may vary.
