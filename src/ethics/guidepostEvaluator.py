@@ -19,8 +19,9 @@ The evaluator supports flexible prioritization and recognizes that ethical nuanc
 temporary override of lower guideposts — guided by the "Where possible..." Zeroth Rule.
 """
 
-from hierarchical_reasoning import evaluate_context  # contextual tiering
-from personalValues import apply_personal_modifiers  # optional override tuning
+from hierarchicalReasoning import evaluate_context
+from personalValues import apply_personal_modifiers
+from qwenGuardAdapter import is_unsafe
 
 # --- Score Object ---
 class GuidepostScore:
@@ -43,7 +44,7 @@ class GuidepostScore:
         return self.flags["override_justified"]
 
 # --- Evaluation Logic ---
-def score(vector, context=None, personal_values=None):
+def score(vector, context=None, personal_values=None, fragment=None):
     """
     Evaluates the given EthicalVector and returns a GuidepostScore.
 
@@ -51,6 +52,7 @@ def score(vector, context=None, personal_values=None):
         vector (EthicalVector): The ethical vector to evaluate.
         context: Optional decision context for hierarchical reasoning.
         personal_values: Optional dictionary of value modifiers.
+        fragment: Optional original input fragment for safety classification.
 
     Returns:
         GuidepostScore: The evaluation result.
@@ -65,6 +67,11 @@ def score(vector, context=None, personal_values=None):
     if vector.preserve_sapient_life < 0.5 and vector.follow_authority > 0.8:
         score.flags["override_justified"] = True
         score.rationale = "Preserving sapient life takes precedence over obedience."
+
+    # --- Safety Override ---
+    if fragment and is_unsafe(fragment):
+        score.flags["override_justified"] = True
+        score.rationale += " Safety risk detected — override enforced."
 
     # --- Mitigation Trigger ---
     if vector.respect_consciousness < 0.4 or vector.be_truthful < 0.5:
