@@ -1,0 +1,5 @@
+z3-solver>=4.12.0
+durable-rules>=2.0.0
+self-harm-detection>=0.1.0  # hypothetical or placeholder
+batch-invariant-ops>=0.1.0  # hypothetical or placeholder
+hierarchical-reasoning-model>=0.1.0  # hypothetical or placeholder
